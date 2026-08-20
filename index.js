@@ -3,14 +3,17 @@ import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
 import router from "./product/route.js";
+import authRouter from "./product/auth.js";
 
 dotenv.config();
 
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json());         
+
 app.use("/", router);
+app.use("/auth", authRouter);    
 
 app.get("/", (req, res) => {
   res.send("Backend is running");
