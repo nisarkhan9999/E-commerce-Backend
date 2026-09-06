@@ -15,7 +15,13 @@ const productSchema = new mongoose.Schema({
  },
   description:{
     type:String
- }
+ } ,
+  category:
+   { type: String 
+      
+   },
+  stock:
+   { type: Number }
 });
 
 export default mongoose.model("Product", productSchema);
