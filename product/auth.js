@@ -55,6 +55,14 @@ router.get("/customers", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+router.delete("/customers/:id", async (req, res) => {
+  try {
+    await User.findByIdAndDelete(req.params.id);
+    res.json({ message: "Deleted" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 
 router.post("/login", async (req, res) => {
