@@ -47,6 +47,14 @@ router.post("/signup", async (req, res) => {
     });
   }
 });
+router.get("/customers", async (req, res) => {
+  try {
+    const customers = await User.find({ role: "customer" }).select("-password");
+    res.json(customers);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 
 router.post("/login", async (req, res) => {
